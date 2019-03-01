@@ -20,11 +20,8 @@ Check out Wagner Effects Composer [here](https://github.com/spite/Wagner),
 
 Here are two videos demonstrating what Wagner can do:
 
-*[Wagner example: DOF + Bloom + Dirty lenses](https://www.youtube.com/watch?v=yKeYxyWcbqE).
-*[Wagner example: Screen-Space Cross-Hatching](https://www.youtube.com/watch?v=BRKRo0ZjAbc)
-
-
-End with an example of getting some data out of the system or using it for a little demo
+* [Wagner example: DOF + Bloom + Dirty lenses](https://www.youtube.com/watch?v=yKeYxyWcbqE).
+* [Wagner example: Screen-Space Cross-Hatching](https://www.youtube.com/watch?v=BRKRo0ZjAbc)
 
 ## Running the tests
 
