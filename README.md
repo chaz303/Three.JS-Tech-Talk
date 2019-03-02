@@ -14,6 +14,14 @@ My Three.js sandbox used during my talk can be found [here](https://github.com/c
 
 ### Shader Demos
 
+* [Shader Toy](https://www.shadertoy.com/)
+
+### Shader Tutorials
+
+* [Intro to WebGL and Shaders](https://www.youtube.com/watch?v=XNbtwyWh9HA)
+* [Using Shaders in the Browser with WebGL](https://www.youtube.com/watch?v=9dPPDf3ZBBI)
+* [Three.js Part 5: Shaders](https://www.youtube.com/watch?v=uD4GnMsAH1U)
+
 ### Wagner Effects Composer
 
 Check out Wagner Effects Composer [here](https://github.com/spite/Wagner),
@@ -27,11 +35,17 @@ Here are two Wagner demonstration videos:
 
 Generate a normalization map from an image with [Normal Map Online](http://cpetry.github.io/NormalMap-Online/).
 
-* **Chaz Wilson**
+## Other Useful Links
 
-LinkedIn
-GitHub
-Facebook
+* [createAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+
+## Created by
+
+**Chaz Wilson**
+
+* [Facebook](https://www.facebook.com/chaz303)
+* [GitHub](https://github.com/chaz303)
+* [LinkedIn](https://www.linkedin.com/in/chaz-wilson-638174179/)
 
 ## License
 
@@ -41,3 +55,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * [threejs.org](https://threejs.org/) was an invaluable resource for preparing my presentation. My code along is largely based on the 
 * [Diving In: THREE.js](https://www.youtube.com/playlist?list=PL08jItIqOb2qyMOhtEUoLh100KpccQiRf) by [CJ Gammon](https://www.youtube.com/user/cjgammon/) helped me get started with Three.js and influenced the structure of my presentation.
+* [JSChannel 2015 - Webgl and Threejs](https://www.youtube.com/watch?v=WC0KJCrTkvg) by Joe Pettersson
