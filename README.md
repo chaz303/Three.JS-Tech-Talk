@@ -15,18 +15,20 @@ My Three.js sandbox used during my talk can be found [here](https://github.com/c
 ### Shader Demos
 
 * [Shader Toy](https://www.shadertoy.com/)
+* [GLSL Sandbox](http://glslsandbox.com/)
 
 ### Shader Tutorials
 
+* [Pixel Shaders](http://pixelshaders.com/)
 * [Intro to WebGL and Shaders](https://www.youtube.com/watch?v=XNbtwyWh9HA)
 * [Using Shaders in the Browser with WebGL](https://www.youtube.com/watch?v=9dPPDf3ZBBI)
 * [Three.js Part 5: Shaders](https://www.youtube.com/watch?v=uD4GnMsAH1U)
 
 ### Wagner Effects Composer
 
-Check out Wagner Effects Composer [here](https://github.com/spite/Wagner),
+Check out [Wagner Effects Composer](https://github.com/spite/Wagner),
 
-Here are two Wagner demonstration videos:
+Wagner demonstration videos:
 
 * [Wagner example: DOF + Bloom + Dirty lenses](https://www.youtube.com/watch?v=yKeYxyWcbqE)
 * [Wagner example: Screen-Space Cross-Hatching](https://www.youtube.com/watch?v=BRKRo0ZjAbc)
@@ -37,7 +39,7 @@ Generate a normalization map from an image with [Normal Map Online](http://cpetr
 
 ## Other Useful Links
 
-* [createAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+* [createAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
 
 ## Created by
 
@@ -49,7 +51,7 @@ Generate a normalization map from an image with [Normal Map Online](http://cpetr
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
 ## Acknowledgements
 

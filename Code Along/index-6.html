@@ -31,8 +31,19 @@
     const light = new THREE.HemisphereLight(0xffff33, 0x33ffff, 2);
     scene.add(light);
 
-    // Create a shape with material, add it to the scene
+    // Create a shape, add it to the scene
     const geometry = new THREE.BoxGeometry(14, 14, 14);
+    // https://threejs.org/docs/index.html#api/en/geometries/BoxGeometry
+
+    // const geometry = new THREE.DodecahedronGeometry(15);
+    // https://threejs.org/docs/index.html#api/en/geometries/DodecahedronGeometry
+
+    // const geometry = new THREE.TorusKnotGeometry(10, 0.5, 64, 12, 11, 12);
+    // https://threejs.org/docs/index.html#api/en/geometries/TorusKnotGeometry
+
+    // const geometry = new THREE.SphereGeometry(15, 18, 13);
+    // https://threejs.org/docs/index.html#api/en/geometries/SphereGeometry
+
     const material = new THREE.MeshStandardMaterial();
     const shape = new THREE.Mesh(geometry, material);
     scene.add(shape);
@@ -51,6 +62,9 @@
       requestAnimationFrame(animate);
       shape.rotation.x += 0.01;
       shape.rotation.y += 0.01;
+      //shape.position.x;
+      //shape.scale.x;
+      //camera.position.x
       renderer.render(scene, camera);
     };
     animate();
