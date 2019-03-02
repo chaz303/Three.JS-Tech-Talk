@@ -10,69 +10,34 @@ Download the 5 html files in the [code along folder](https://github.com/chaz303/
 
 My Three.js sandbox used during my talk can be found [here](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Sandbox). This code needs to be run on a local server in order to work.
 
-## Shader Resources
+## Shaders
 
-
+### Shader Demos
 
 ### Wagner Effects Composer
 
 Check out Wagner Effects Composer [here](https://github.com/spite/Wagner),
 
-Here are two videos demonstrating what Wagner can do:
+Here are two Wagner demonstration videos:
 
-* [Wagner example: DOF + Bloom + Dirty lenses](https://www.youtube.com/watch?v=yKeYxyWcbqE).
+* [Wagner example: DOF + Bloom + Dirty lenses](https://www.youtube.com/watch?v=yKeYxyWcbqE)
 * [Wagner example: Screen-Space Cross-Hatching](https://www.youtube.com/watch?v=BRKRo0ZjAbc)
 
-## Running the tests
+## Normalization Maps
 
-Explain how to run the automated tests for this system
+Generate a normalization map from an image with [Normal Map Online](http://cpetry.github.io/NormalMap-Online/).
 
-### Break down into end to end tests
+* **Chaz Wilson**
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use  for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+LinkedIn
+GitHub
+Facebook
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Acknowledgements
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+* [threejs.org](https://threejs.org/) was an invaluable resource for preparing my presentation. My code along is largely based on the 
+* [Diving In: THREE.js](https://www.youtube.com/playlist?list=PL08jItIqOb2qyMOhtEUoLh100KpccQiRf) by [CJ Gammon](https://www.youtube.com/user/cjgammon/) helped me get started with Three.js and influenced the structure of my presentation.
