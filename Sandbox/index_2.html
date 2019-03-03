@@ -1,0 +1,1027 @@
+<html>
+  <head>
+    <title>Chaz's Three.js Sandbox</title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="theCanvas"></canvas>
+
+    <script src="three.js"></script>
+
+    <script>
+      let mesh = [];
+      // SHAPES
+      let renderer,
+        scene,
+        camera,
+        myCanvas = document.getElementById("theCanvas");
+      textBox = document.createElement("div");
+
+      document.body.appendChild(textBox);
+
+      let shapeNumber = 0;
+      let materialNumber = 6;
+      const displayArray = ["selShape", "selMat", "selLight", "selCam"];
+      let displayNumber = 3;
+      let rotationOn = true;
+      let wireframeOn = false;
+      let displayHelp = false;
+      let lightOn = false;
+
+      //RENDERER
+      renderer = new THREE.WebGLRenderer({ canvas: myCanvas, antialias: true });
+      renderer.setClearColor(0x000000);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFShadowMap; // or PCFSoftShadowMap
+
+      //CAMERA
+
+      const orthoDiv = 16;
+
+      const persCam = {
+        category: "Camera",
+        name: "Perspective Camera",
+        definition:
+          "PerspectiveCamera(<u>fov : Float, aspect : Float</u>, near : Float, far : Float)",
+        camera: new THREE.PerspectiveCamera(
+          35,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          3000
+        )
+      };
+
+      const orthCam = {
+        category: "Camera",
+        name: "Orthographic Camera",
+        definition:
+          "OrthographicCamera(<u>left : Float, right : Float, top : Float, bottom : Float</u>, near : Float, far : Float )",
+        camera: new THREE.OrthographicCamera(
+          window.innerWidth / -orthoDiv,
+          window.innerWidth / orthoDiv,
+          window.innerHeight / orthoDiv,
+          window.innerHeight / -orthoDiv,
+          0.1,
+          3000
+        )
+      };
+
+      //SCENE
+      scene = new THREE.Scene();
+
+      //DEMO LIGHTS
+
+      const lightColor = 0x00ff00;
+      const lightColor2 = 0x3366ff;
+      const lightIntensity = 6;
+
+      const ambientLight = {
+        category: "Light",
+        name: "Ambient Light",
+        definition: "AmbientLight(<u>color : Integer, intensity : Float</u>)",
+        light: new THREE.AmbientLight(lightColor, lightIntensity)
+      };
+
+      const hemisphereLight = {
+        category: "Light",
+        name: "Hemisphere Light",
+        definition:
+          "HemisphereLight(<u>skyColor : Integer, groundColor : Integer, intensity : Float</u>)",
+        light: new THREE.HemisphereLight(
+          lightColor,
+          lightColor2,
+          lightIntensity
+        )
+      };
+
+      const pointLight = {
+        category: "Light",
+        name: "Point Light",
+        definition:
+          "PointLight(<u>color : Integer, intensity : Float</u>, distance : Number, decay : Float)",
+        light: new THREE.PointLight(lightColor, lightIntensity)
+      };
+
+      const directionalLight = {
+        category: "Light",
+        name: "Directional Light",
+        definition:
+          "DirectionalLight(<u>color : Integer, intensity : Float)</u>",
+        light: new THREE.DirectionalLight(
+          lightColor,
+          lightIntensity /*, needstarget */
+        )
+      };
+
+      const spotLight = {
+        category: "Light",
+        name: "Spotlight",
+        definition:
+          "SpotLight(<u>color : Integer, intensity : Float</u>, distance : Float, angle : Radians, penumbra : Float, decay : Float)",
+        light: new THREE.SpotLight(
+          lightColor,
+          lightIntensity /*, needstarget */
+        )
+      };
+
+      movingLightArray = [pointLight, directionalLight, spotLight];
+
+      //LIGHTS
+
+      let light = new THREE.AmbientLight(0xffffff, 0.2);
+      scene.add(light);
+
+      // WHITE POINT LIGHT
+      let whiteLight = new THREE.PointLight(0x999999, 1.0);
+      whiteLight.position.set(100, 0, 0);
+      whiteLight.castShadow = true;
+      whiteLight.shadowDarkness = 0.9;
+      scene.add(whiteLight);
+
+      // ORANGE-ISH LIGHT
+      let orangeLight = new THREE.PointLight(0x996633, 1.0);
+      orangeLight.position.set(-100, 0, 0);
+      orangeLight.castShadow = true;
+      orangeLight.shadowDarkness = 0.9;
+      scene.add(orangeLight);
+
+      //BASIC GEOMETRY
+
+      let baseSize = 10;
+
+      const boxGeo = {
+        category: "Basic Geometries",
+        name: "Box Geometry",
+        geometry: new THREE.BoxBufferGeometry(
+          baseSize,
+          baseSize * 1.5,
+          baseSize / 2
+        ),
+        definition:
+          "BoxGeometry(<u>width : Float, height : Float, depth : Float</u>, widthSegments : Integer, heightSegments : Integer, depthSegments : Integer)"
+      };
+
+      const sphereGeo = {
+        category: "Basic Geometries",
+        name: "Sphere Geometry",
+        geometry: new THREE.SphereBufferGeometry(baseSize),
+        definition:
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const sphereVar1Geo = {
+        category: "Basic Geometries",
+        name: "Sphere Geometry (16 x 16 Segments)",
+        geometry: new THREE.SphereBufferGeometry(baseSize, 16, 16),
+        definition:
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const sphereVar2Geo = {
+        category: "Basic Geometries",
+        name: "Sphere Geometry (32 x 32 Segments)",
+        geometry: new THREE.SphereBufferGeometry(baseSize, 32, 32),
+        definition:
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const sphereVar3Geo = {
+        category: "Basic Geometries",
+        name: "Sphere Geometry (64 x 64 Segments)",
+        geometry: new THREE.SphereBufferGeometry(baseSize, 64, 64),
+        definition:
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const coneGeo = {
+        category: "Basic Geometries",
+        name: "Cone Geometry",
+        geometry: new THREE.ConeBufferGeometry(baseSize, baseSize * 2),
+        definition:
+          "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const coneVar1Geo = {
+        category: "Basic Geometries",
+        name: "Cone Geometry (32 Segments)",
+        geometry: new THREE.ConeBufferGeometry(baseSize, baseSize * 2, 32),
+        definition:
+          "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const cylinderGeo = {
+        category: "Basic Geometries",
+        name: "Cylinder Geometry",
+        geometry: new THREE.CylinderBufferGeometry(
+          baseSize,
+          baseSize,
+          baseSize * 2
+        ),
+        definition:
+          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)"
+      };
+
+      const cylinderVar1Geo = {
+        category: "Basic Geometries",
+        name: "Cylinder Geometry (32 Segments)",
+        geometry: new THREE.CylinderBufferGeometry(
+          baseSize,
+          baseSize,
+          baseSize * 2,
+          32
+        ),
+        definition:
+          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)"
+      };
+
+      const cylinderVar2Geo = {
+        category: "Basic Geometries",
+        name: "Cylinder Geometry (Big Base)",
+        geometry: new THREE.CylinderBufferGeometry(
+          baseSize,
+          baseSize * 1.5,
+          baseSize * 2,
+          32
+        ),
+        definition:
+          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)"
+      };
+
+      //FLAT GEOMETRY
+
+      const planeGeo = {
+        category: "Flat Geometries",
+        name: "Plane Geometry",
+        geometry: new THREE.PlaneBufferGeometry(baseSize * 1.5, baseSize * 1.5),
+        definition:
+          "PlaneGeometry(<u>width : Float, height : Float</u>, widthSegments : Integer, heightSegments : Integer)"
+      };
+
+      const circleGeo = {
+        category: "Flat Geometries",
+        name: "Circle Geometry",
+        geometry: new THREE.CircleBufferGeometry(baseSize),
+        definition:
+          "CircleGeometry(<u>radius : Float</u>, segments : Integer, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const circleVar1Geo = {
+        category: "Flat Geometries",
+        name: "Circle Geometry (32 Segments)",
+        geometry: new THREE.CircleBufferGeometry(baseSize, 32),
+        definition:
+          "CircleGeometry(<u>radius : Float</u>, segments : Integer, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const ringGeo = {
+        category: "Flat Geometries",
+        name: "Ring Geometry",
+        geometry: new THREE.RingBufferGeometry(baseSize / 2, baseSize),
+        definition:
+          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const ringVar1Geo = {
+        category: "Flat Geometries",
+        name: "Ring Geometry (32 Segments)",
+        geometry: new THREE.RingBufferGeometry(baseSize / 2, baseSize, 32),
+        definition:
+          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)"
+      };
+
+      const ringVar2Geo = {
+        category: "Flat Geometries",
+        name: "Ring Geometry (Short Theta Length)",
+        geometry: new THREE.RingBufferGeometry(
+          baseSize / 2,
+          baseSize,
+          32,
+          1,
+          0,
+          4.5
+        ),
+        definition:
+          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)"
+      };
+
+      //EXOTIC GEOMETRY
+
+      const tetraGeo = {
+        category: '"Interesting" Geometries',
+        name: "Tetrahedron Geometry",
+        geometry: new THREE.TetrahedronBufferGeometry(baseSize), // "Uncaught TypeError: THREE.TetrahedronBufferGeometry is not a constructor" Not in threejs min
+        definition:
+          "TetrahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+      };
+
+      const dodecaGeo = {
+        category: '"Interesting" Geometries',
+        name: "Dodecahedron Geometry",
+        geometry: new THREE.DodecahedronBufferGeometry(baseSize),
+        definition:
+          "DodecahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+      };
+
+      const icosaGeo = {
+        category: '"Interesting" Geometries',
+        name: "Icosahedron Geometry",
+        geometry: new THREE.IcosahedronBufferGeometry(baseSize),
+        definition:
+          "IcosahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+      };
+
+      const octaGeo = {
+        category: '"Interesting" Geometries',
+        name: "Octahedron Geometry",
+        geometry: new THREE.OctahedronBufferGeometry(baseSize),
+        definition:
+          "OctahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+      };
+
+      const torusGeo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Geometry",
+        geometry: new THREE.TorusBufferGeometry(baseSize, baseSize / 5, 3, 16),
+        definition:
+          "TorusGeometry(<u>radius : Float, tube : Float</u>, radialSegments : Integer, tubularSegments : Integer, arc : Float)"
+      };
+
+      const torusVar1Geo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Geometry (Variation 1)",
+        geometry: new THREE.TorusBufferGeometry(baseSize, baseSize / 5, 7, 32),
+        definition:
+          "TorusGeometry(<u>radius : Float, tube : Float</u>, radialSegments : Integer, tubularSegments : Integer, arc : Float)"
+      };
+
+      const torusKnotGeo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Knot Geometry",
+        geometry: new THREE.TorusKnotBufferGeometry(
+          baseSize,
+          baseSize / 7.5,
+          60,
+          5
+        ),
+        definition:
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+      };
+
+      const torusKnotVar1Geo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Knot Geometry (Variation 1)",
+        geometry: new THREE.TorusKnotBufferGeometry(
+          baseSize,
+          baseSize / 7.5,
+          21,
+          3,
+          25,
+          10
+        ),
+        definition:
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+      };
+
+      const torusKnotVar2Geo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Knot Geometry (Variation 2)",
+        geometry: new THREE.TorusKnotBufferGeometry(
+          baseSize,
+          baseSize / 7,
+          90,
+          5,
+          7,
+          5
+        ),
+        definition:
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+      };
+
+      const torusKnotVar3Geo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Knot Geometry (Variation 3)",
+        geometry: new THREE.TorusKnotBufferGeometry(
+          baseSize,
+          baseSize / 5,
+          21,
+          9,
+          7,
+          4
+        ),
+        definition:
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+      };
+
+      const torusKnotVar4Geo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Knot Geometry (Variations)",
+        geometry: new THREE.TorusKnotBufferGeometry(
+          baseSize,
+          baseSize / 10,
+          21,
+          20,
+          3,
+          14
+        ),
+        definition:
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+      };
+
+      const torusKnotVar5Geo = {
+        category: '"Interesting" Geometries',
+        name: "Torus Knot Geometry (Variations)",
+        geometry: new THREE.TorusKnotBufferGeometry(
+          baseSize,
+          baseSize / 5,
+          17,
+          10,
+          1,
+          6
+        ),
+        definition:
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+      };
+
+      const shapeArray = [
+        boxGeo,
+        sphereGeo,
+        sphereVar1Geo,
+        sphereVar2Geo,
+        sphereVar3Geo,
+        coneGeo,
+        coneVar1Geo,
+        cylinderGeo,
+        cylinderVar1Geo,
+        cylinderVar2Geo,
+        planeGeo,
+        circleGeo,
+        circleVar1Geo,
+        ringGeo,
+        ringVar1Geo,
+        ringVar2Geo,
+        tetraGeo,
+        dodecaGeo,
+        icosaGeo,
+        octaGeo,
+        torusGeo,
+        torusVar1Geo,
+        torusKnotGeo,
+        torusKnotVar1Geo,
+        torusKnotVar2Geo,
+        torusKnotVar3Geo,
+        torusKnotVar4Geo,
+        torusKnotVar5Geo
+      ];
+
+      // MATERIALS
+      let materialColor = "#8899aa";
+      let materialTransparency = false;
+      let materialOpacity = 0.75;
+      let materialWireframe = false;
+      let materialWireLineWidth = 1;
+      let materialRoughness = 0.9; // Standard Only, diffusion of reflection
+      let materialMetalness = 0.2; // Standard Only, amount of reflection
+      let materialShininess = 52; // Phong Only ???
+
+      // MAPS also alphaMap (tranparency), displacementMap (position of vertices, cast shadow, block objects
+      // emissiveMap(glow map) needs .emissive to be non-black
+      // let specularMap =
+      let materialMap = new THREE.TextureLoader().load("img/concrete.png");
+      let normalMap = new THREE.TextureLoader().load("img/concrete_normal.png");
+
+      let materialSettingsNoMap = {
+        color: materialColor,
+        transparent: materialTransparency,
+        opacity: materialOpacity,
+        wireframe: materialWireframe,
+        wireframeLinewidth: materialWireLineWidth,
+        roughness: materialRoughness,
+        metalness: materialMetalness
+      };
+      let materialSettingsMap = {
+        color: materialColor,
+        transparent: materialTransparency,
+        opacity: materialOpacity,
+        wireframe: materialWireframe,
+        wireframeLinewidth: materialWireLineWidth,
+        map: materialMap,
+        normalMap: normalMap
+      };
+
+      //MESH MATERIALS
+
+      let meshBasicMap = {
+        category: "Material",
+        name: "Mesh Basic Material (with Material Map)",
+        definition: "MeshBasicMaterial( parameters : Object )",
+        material: new THREE.MeshBasicMaterial(materialSettingsMap)
+      };
+
+      let meshBasicNoMap = {
+        category: "Material",
+        name: "Mesh Basic Material",
+        definition: "MeshBasicMaterial( parameters : Object )",
+        material: new THREE.MeshBasicMaterial(materialSettingsNoMap)
+      };
+
+      let meshLambertMap = {
+        category: "Material",
+        name: "Mesh Lambert Material (with Material Map)",
+        definition: "MeshLambertMaterial( parameters : Object )",
+        material: new THREE.MeshLambertMaterial(materialSettingsMap)
+      };
+
+      let meshLambertNoMap = {
+        category: "Material",
+        name: "Mesh Lambert Material",
+        definition: "MeshLambertMaterial( parameters : Object )",
+        material: new THREE.MeshLambertMaterial(materialSettingsNoMap)
+      };
+
+      let meshPhongMap = {
+        category: "Material",
+        name: "Mesh Phong Material (with Material Map)",
+        definition: "MeshPhongMaterial( parameters : Object )",
+        material: new THREE.MeshPhongMaterial(materialSettingsMap)
+      };
+
+      let meshPhongNoMap = {
+        category: "Material",
+        name: "Mesh Phong Material",
+        definition: "MeshPhongMaterial( parameters : Object )",
+        material: new THREE.MeshPhongMaterial(materialSettingsNoMap)
+      };
+
+      let meshStandardMap = {
+        category: "Material",
+        name: "Mesh Standard Material (with Material Map)",
+        definition: "MeshStandardMaterial( parameters : Object )",
+        material: new THREE.MeshStandardMaterial(materialSettingsMap)
+      };
+
+      let meshStandardNoMap = {
+        category: "Material",
+        name: "Mesh Standard Material",
+        definition: "MeshStandardMaterial( parameters : Object )",
+        material: new THREE.MeshStandardMaterial(materialSettingsNoMap)
+      };
+
+      let meshNormal = {
+        category: "Material",
+        name: "Mesh Normal Material",
+        definition: "MeshNormalMaterial( parameters : Object )",
+        material: new THREE.MeshNormalMaterial(materialSettingsNoMap)
+      };
+
+      let meshDepth = {
+        category: "Material",
+        name: "Mesh Depth Material",
+        definition: "",
+        material: new THREE.MeshDepthMaterial(materialSettingsNoMap)
+      };
+
+      const materialArray = [
+        meshBasicNoMap,
+        meshBasicMap,
+        meshLambertNoMap,
+        meshLambertMap,
+        meshPhongNoMap,
+        meshPhongMap,
+        meshStandardNoMap,
+        meshStandardMap,
+        meshNormal
+      ];
+
+      //LINE AND POINT MATERIALS LineDashed also exists needs compute geometry
+
+      let points = new THREE.PointsMaterial(); //only lineBasic, no other mesh like ones
+
+      // VARIABLES TO CHANGE 2 of 2
+
+      let selMat = materialArray[materialNumber];
+      let selShape = boxGeo; //should be boxGeo
+      let selCam = persCam;
+
+      let display = {};
+      let selType = selShape;
+
+      let camera1 = persCam.camera; // don't change
+      let camera2 = orthCam.camera; // don't change
+
+      let geometry = selShape.geometry;
+      let material = selMat.material;
+
+      let lineMaterial = new THREE.LineBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.65,
+        linewidth: 2
+      });
+
+      let group1 = new THREE.Group();
+      if (wireframeOn) {
+        group1.add(new THREE.WireframeGeometry(geometry, lineMaterial));
+      }
+      group1.add(new THREE.Mesh(geometry, material));
+
+      group1.position.z = -70;
+
+      let mesh2 = new THREE.Mesh(geometry, material);
+      mesh2.position.z = -150;
+      mesh2.position.x = -60;
+
+      let mesh3 = new THREE.Mesh(geometry, material);
+      mesh3.position.z = mesh2.position.z;
+      mesh3.position.x = mesh2.position.x * -1;
+
+      mesh2.rotation.y = -1 * Math.PI;
+      mesh3.rotation.y = mesh2.rotation.y;
+
+      let testGeometry = new THREE.TetrahedronBufferGeometry(4);
+      let testMaterial = new THREE.MeshStandardMaterial();
+
+      movingLightNumber = 0;
+      selLight = movingLightArray[movingLightNumber];
+      movingLight = selLight.light;
+      movingLight.target = group1;
+      movingLight.position.y = -100;
+      let lightdotGeo = new THREE.SphereGeometry(0.5, 8, 8);
+      let lightdotMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      let lightdot = new THREE.Mesh(lightdotGeo, lightdotMat);
+
+      scene.add(group1);
+      scene.add(mesh2, mesh3);
+
+      camera1.position.y = 30;
+      camera2.position.y = camera1.position.y;
+
+      let cameraDelta = -2.65 * Math.PI;
+      let lightDelta = 0; //-2.65 * Math.PI;
+      group1.rotation.y = 0;
+
+      let frameCount = 0;
+
+      // start up
+      changeGeometry(shapeArray[0]);
+      switchDisplay();
+      animate();
+
+      function animate() {
+        render();
+        displayInformationBox();
+        // if ((frameCount + 1) % 700 == 0) {
+        //   selShape = shapeArray[shapeNumber];
+        //   changeGeometry(selShape);
+        //   if (shapeNumber < shapeArray.length - 1) {
+        //     shapeNumber++;
+        //   } else {
+        //     shapeNumber = 0;
+        //   }
+        // }
+        frameCount++;
+        requestAnimationFrame(animate);
+      }
+
+      // Keyboard handler and related functions
+
+      window.onkeyup = function(e) {
+        const key = e.keyCode ? e.keyCode : e.which;
+        console.log("Key press is:", key);
+        switch (key) {
+          case 87: // "w"
+            toggleWireframe();
+            break;
+          case 78: // "n"
+            prevMaterial();
+            break;
+          case 77: // "m"
+            nextMaterial();
+            break;
+          case 76: // "l"
+            switchMovingLight();
+            break;
+          case 75: // "k"
+            toggleLight();
+            break;
+          case 72:
+            toggleHelp();
+            break;
+          case 68: // "d"
+            switchDisplay();
+            break;
+          case 67: // "c"
+            switchCamera();
+            break;
+          case 39: // "right arrow"
+            nextShape();
+            break;
+          case 37: // "left arrow"
+            prevShape();
+            break;
+          case 32: // "space bar"
+            toggleRotation();
+            break;
+        }
+      };
+
+      function toggleWireframe() {
+        wireframeOn = !wireframeOn;
+        changeGeometry(shapeArray[shapeNumber]);
+      }
+
+      function prevMaterial() {
+        if (materialNumber === 0) {
+          materialNumber = materialArray.length - 1;
+        } else {
+          materialNumber--;
+        }
+        selMat = materialArray[materialNumber];
+        changeGeometry(selShape);
+        displayNumber = 1;
+        selType = displayArray[displayNumber];
+      }
+
+      function nextMaterial() {
+        if (materialNumber === materialArray.length - 1) {
+          materialNumber = 0;
+        } else {
+          materialNumber++;
+        }
+        selMat = materialArray[materialNumber];
+        changeGeometry(selShape);
+        displayNumber = 1;
+        selType = displayArray[displayNumber];
+      }
+
+      function switchMovingLight() {
+        if (lightOn) {
+          if (movingLightNumber === movingLightArray.length - 1) {
+            movingLightNumber = 0;
+          } else {
+            movingLightNumber++;
+          }
+          selLight = movingLightArray[movingLightNumber];
+          scene.remove(movingLight);
+          movingLight = selLight.light;
+          movingLight.castShadow = true;
+          movingLight.shadowDarkness = 0.9;
+          movingLight.intensity = 0.1;
+
+          scene.add(movingLight);
+          displayNumber = 2;
+          selType = displayArray[displayNumber];
+        }
+      }
+
+      function toggleLight() {
+        lightOn = !lightOn;
+        if (lightOn) {
+          scene.add(movingLight);
+          scene.add(lightdot);
+        } else {
+          scene.remove(movingLight);
+          scene.remove(lightdot);
+        }
+      }
+
+      function toggleHelp() {
+        displayHelp = !displayHelp;
+      }
+
+      function switchDisplay() {
+        if (displayNumber === displayArray.length - 1) {
+          displayNumber = 0;
+        } else {
+          displayNumber++;
+        }
+        selType = displayArray[displayNumber];
+      }
+
+      function switchCamera() {
+        if (selCam === persCam) {
+          selCam = orthCam;
+        } else {
+          selCam = persCam;
+        }
+        displayNumber = 3;
+        selType = displayArray[displayNumber];
+      }
+
+      function nextShape() {
+        if (shapeNumber < shapeArray.length - 1) {
+          shapeNumber++;
+        } else {
+          shapeNumber = 0;
+        }
+        selShape = shapeArray[shapeNumber];
+        changeGeometry(selShape);
+        displayNumber = 0;
+        selType = displayArray[displayNumber];
+      }
+
+      function prevShape() {
+        if (shapeNumber === 0) {
+          shapeNumber = shapeArray.length - 1;
+        } else {
+          shapeNumber--;
+        }
+        selShape = shapeArray[shapeNumber];
+        changeGeometry(selShape);
+        displayNumber = 0;
+        selType = displayArray[displayNumber];
+      }
+
+      function toggleRotation() {
+        rotationOn = !rotationOn;
+      }
+
+      function changeGeometry(newGeo) {
+        /* I'd like to make a more generalized function that accepts and object,
+                    but adding and removing AND keeping the same name is difficult. */
+        geometry = newGeo.geometry;
+        material = selMat.material;
+        // Group 1
+        storeXRot = group1.rotation.x;
+        storeYRot = group1.rotation.y;
+        storeZRot = group1.rotation.z;
+        storeZPos = group1.position.z;
+        scene.remove(group1);
+
+        group1 = new THREE.Group();
+        invisibleObject = new THREE.Mesh(geometry, material);
+        invisibleObject.material.visible = false;
+        group1.add(invisibleObject);
+        if (wireframeOn) {
+          let wireframe = new THREE.WireframeGeometry(geometry);
+          group1.add(new THREE.LineSegments(wireframe, lineMaterial));
+        }
+        group1.position.z = storeZPos;
+        group1.rotation.x = storeXRot;
+        group1.rotation.y = storeYRot;
+        group1.rotation.z = storeZRot;
+        scene.add(group1);
+        // MESH 2
+        storeXRot = mesh2.rotation.x;
+        storeYRot = mesh2.rotation.y;
+        storeZRot = mesh2.rotation.z;
+        storeZPos = mesh2.position.z;
+        scene.remove(mesh2);
+        mesh2 = new THREE.Mesh(geometry, material);
+        mesh2.position.z = storeZPos;
+        mesh2.position.x = -60;
+        mesh2.rotation.x = storeXRot;
+        mesh2.rotation.y = storeYRot;
+        mesh2.rotation.z = storeZRot;
+        scene.add(mesh2);
+        // MESH 3
+        scene.remove(mesh3);
+        storeXRot = mesh3.rotation.x;
+        storeYRot = mesh3.rotation.y;
+        storeZRot = mesh3.rotation.z;
+        mesh3 = new THREE.Mesh(geometry, material);
+        mesh3.position.z = mesh2.position.z;
+        mesh3.position.x = mesh2.position.x * -1;
+        mesh3.rotation.x = storeXRot;
+        mesh3.rotation.y = storeYRot;
+        mesh3.rotation.z = storeZRot;
+        scene.add(mesh3);
+
+        mesh2.updateMatrixWorld();
+        //let vector = mesh2.geometry.vertices[i].clone();
+      }
+
+      //RENDER FRAME
+
+      function render() {
+        // LIGHT ANIMATION
+        lightDelta -= 0.02;
+        movingLight.position.x = Math.sin(lightDelta) * 200;
+        movingLight.position.z = group1.position.z + Math.cos(lightDelta) * 200;
+        lightdot.position.x = movingLight.position.x;
+        lightdot.position.y = movingLight.position.y;
+        lightdot.position.z = movingLight.position.z;
+
+        if (rotationOn) {
+          group1.rotation.x += 0.015;
+          group1.rotation.y += 0.013;
+          group1.rotation.z += 0.017;
+          let divisor = 1.6;
+          let multiplier = 0;
+          group1.scale.set(
+            5 + multiplier * Math.sin(frameCount / divisor),
+            5 + multiplier * Math.sin(frameCount / divisor),
+            5 + multiplier * Math.sin(frameCount / divisor)
+          );
+          mesh2.rotation.y += 0.008;
+          mesh3.rotation.y += 0.008;
+        }
+        if (cameraDelta > -4 * Math.PI) {
+          cameraDelta -= 0.01;
+          camera1.lookAt(group1.position);
+          camera2.lookAt(group1.position);
+          camera1.position.x = Math.sin(cameraDelta) * 70;
+          camera2.position.x = camera1.position.x;
+          camera1.position.z = group1.position.z + Math.cos(cameraDelta) * 70;
+          camera2.position.z = camera1.position.z;
+          camera1.position.z -= 0.08;
+          camera2.position.z -= camera1.position.z;
+        } else if (camera1.position.z > 5) {
+          camera1.position.z -= 0.1;
+          camera2.position.z -= 0.1;
+        }
+
+        let position = group1.children[0].geometry.attributes.position;
+        let vector = new THREE.Vector3();
+        for (let i in mesh) {
+          scene.remove(mesh[i]);
+        }
+        for (let i = 0, l = position.count; i < l; i++) {
+          vector.fromBufferAttribute(position, i);
+          vector.applyMatrix4(group1.children[0].matrixWorld);
+          mesh[i] = new THREE.Mesh(testGeometry, testMaterial);
+          mesh[i].position.x = vector.x;
+          mesh[i].position.y = vector.y;
+          mesh[i].position.z = vector.z;
+          mesh[i].castShadow = true;
+          mesh[i].receiveShadow = true;
+          mesh[i].rotation.x = group1.rotation.x * 1.51;
+          mesh[i].rotation.y = group1.rotation.x * 1.51;
+          mesh[i].rotation.z = group1.rotation.x * 1.51;
+          scene.add(mesh[i]);
+        }
+        // geometry.verticesNeedUpdate = true;
+
+        //core of renderer function
+        if (selCam === persCam) {
+          renderer.render(scene, camera1);
+        } else {
+          renderer.render(scene, camera2);
+        }
+        //update window size
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera1.aspect = window.innerWidth / window.innerHeight;
+        camera1.aspect = camera1.aspect;
+
+        camera1.updateProjectionMatrix();
+        camera2.updateProjectionMatrix();
+      }
+      function displayInformationBox() {
+        switch (selType) {
+          case "selShape":
+            display = selShape;
+            break;
+          case "selMat":
+            display = selMat;
+            break;
+          case "selLight":
+            display = selLight;
+            break;
+          case "selCam":
+            display = selCam;
+            break;
+        }
+        textBox.style.position = "absolute";
+        textBox.style.width = 500;
+        textBox.style.height = 250;
+        textBox.style.color = "#ffffff";
+        //textBox.style.backgroundColor = "white";
+        textBox.style.padding = 10 + "px";
+        if (displayHelp === false) {
+          textBox.innerHTML =
+            "<h2>" +
+            display.category +
+            ":</h2><h1>" +
+            display.name +
+            "</h1>" +
+            "<h3><code>" +
+            display.definition +
+            "</code></h3>";
+        } else {
+          textBox.innerHTML =
+            "<h2>Help:</h2>" +
+            "<h3><code>" +
+            "h - display/hide help<br/>" +
+            "d - cycle display information<br/>" +
+            "c - switch perspective and orthoscopic cameras<br/>" +
+            "right arrow - display next shape<br/>" +
+            "left arrow -  display previous shape<br/>" +
+            "w - display/hide wireframe<br/>" +
+            "m - display next material<br/>" +
+            "n - display previous material<br/>" +
+            "space - start/stop shapes' rotation<br/>" +
+            "</code></h3>";
+        }
+        textBox.style.top = 10 + "px";
+        textBox.style.left = 10 + "px";
+      }
+    </script>
+  </body>
+</html>
