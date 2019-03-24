@@ -21,7 +21,7 @@ Once the server is running:
 * Click on [this link (http://localhost:8080/index_2.html)](http://localhost:8080/index_2.html) for the *experimental* sandbox.
 * When the page has loaded: press the 'h' key for help.
 
-<img src="./img/dodecahedronlight.jpg" alt="Dodecahedron with Lighting" height="317" width="466">
+<img src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting" height="317" width="466">
 
 ## Here is the code along:
 
