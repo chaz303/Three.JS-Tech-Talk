@@ -54,7 +54,7 @@ Enter the following commands:
 <img src="./img/codealong.png" alt="Code Along">
 </p>
 
-## Shaders
+## Additional Resources
 
 ### Shader Demos
 
@@ -77,11 +77,11 @@ Wagner demonstration videos:
 * [Wagner example: DOF + Bloom + Dirty lenses](https://www.youtube.com/watch?v=yKeYxyWcbqE)
 * [Wagner example: Screen-Space Cross-Hatching](https://www.youtube.com/watch?v=BRKRo0ZjAbc)
 
-## Normalization Maps
+### Normalization Maps
 
 Generate a normalization map from an image with [Normal Map Online](http://cpetry.github.io/NormalMap-Online/).
 
-## Other Useful Links
+### Other Useful Links
 
 * [createAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
 
@@ -89,9 +89,9 @@ Generate a normalization map from an image with [Normal Map Online](http://cpetr
 
 **Chaz Wilson**
 
-* [Facebook](https://www.facebook.com/chaz303)
-* [GitHub](https://github.com/chaz303)
-* [LinkedIn](https://www.linkedin.com/in/chaz-wilson-638174179/)
+[Facebook](https://www.facebook.com/chaz303)
+[GitHub](https://github.com/chaz303)
+[LinkedIn](https://www.linkedin.com/in/chaz-wilson-638174179/)
 
 ## License
 
