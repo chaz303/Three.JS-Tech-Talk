@@ -22,13 +22,13 @@ Once the server is running:
 * When the page has loaded: press the 'h' key for help.
 
 ### Original Sandbox Screenshots: ###
-<img align="right" src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting" height="317" width="466">
-<img src="./img/torusnormal.png" alt="Torus with Normal Mapping" height="317" width="466">
+<img align="middle" src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting" height="317" width="466">
+<img align="middle" src="./img/torusnormal.png" alt="Torus with Normal Mapping" height="317" width="466">
 
 ### Experimental Sandbox Screenshots: ###
 
-<img src="./img/experimental1.png" alt="Experimental Image 1" height="317" width="466">
-<img src="./img/experimental2.png" alt="Experimental Image 2" height="317" width="466">
+<img align="middle" src="./img/experimental1.png" alt="Experimental Image 1" height="317" width="466">
+<img align="middle" src="./img/experimental2.png" alt="Experimental Image 2" height="317" width="466">
 
 ## Here is the code along:
 
@@ -43,7 +43,7 @@ Enter the following commands:
 
 ### Code Along Screenshot (index_5.html): ###
 
-<img src="./img/codealong.png" alt="Code Along" height="338" width="385">
+<img align="middle" src="./img/codealong.png" alt="Code Along" height="338" width="385">
 
 ## Shaders
 
