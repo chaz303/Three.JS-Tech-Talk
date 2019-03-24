@@ -13,7 +13,7 @@ My Three.js sandbox used during my talk can be found [here](https://github.com/c
 Enter the following commands
 * `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
 * `cd ./Three.JS-Tech-Talk/Sandbox/`
-* `npm install http-server -g`
+* `sudo npm install http-server -g`
 * `http-server -c-1`
 
 Once the server is running:
