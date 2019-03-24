@@ -9,6 +9,10 @@ Download the 5 html files in the [code along folder](https://github.com/chaz303/
 ## My Three.js Sandbox
 
 My Three.js sandbox used during my talk can be found [here](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Sandbox). This code needs to be run on a local server in order to work.
+* Run: npm install http-server -g
+* Inside the "Sandbox" drectory, run: http-server -c-1
+* Inside a web browser, open: [http://localhost:8080](http://localhost:8080)
+* Once the page has loaded: press the 'h' key for help.
 
 ## Shaders
 
