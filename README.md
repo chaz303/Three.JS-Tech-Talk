@@ -27,14 +27,14 @@ Once the server is running:
 
 ### Original Sandbox Screenshots:
 <p align="center">
-<img src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting" height="317" width="466">
-<img src="./img/torusnormal.png" alt="Torus with Normal Mapping" height="317" width="466">
+<img src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting">
+<img src="./img/torusnormal.png" alt="Torus with Normal Mapping">
 </p>
 
 ### Experimental Sandbox Screenshots:
 <p align="center">
-<img src="./img/experimental1.png" alt="Experimental Image 1" height="317" width="466">
-<img src="./img/experimental2.png" alt="Experimental Image 2" height="317" width="466">
+<img src="./img/experimental1.png" alt="Experimental Image 1">
+<img src="./img/experimental2.png" alt="Experimental Image 2">
 </p>
 
 ## Here is the code along:
