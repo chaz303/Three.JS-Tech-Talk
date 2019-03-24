@@ -13,6 +13,7 @@
     <canvas id="theCanvas"></canvas>
 
     <script src="three.js"></script>
+    <script src="lfo.js"></script>
 
     <script>
       let mesh = [];
@@ -187,16 +188,16 @@
 
       const sphereVar2Geo = {
         category: "Basic Geometries",
-        name: "Sphere Geometry (32 x 32 Segments)",
-        geometry: new THREE.SphereBufferGeometry(baseSize, 32, 32),
+        name: "Sphere Geometry (12 x 8 Segments)",
+        geometry: new THREE.SphereBufferGeometry(baseSize, 12, 8),
         definition:
           "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
       };
 
       const sphereVar3Geo = {
         category: "Basic Geometries",
-        name: "Sphere Geometry (64 x 64 Segments)",
-        geometry: new THREE.SphereBufferGeometry(baseSize, 64, 64),
+        name: "Sphere Geometry (8 x 12 Segments)",
+        geometry: new THREE.SphereBufferGeometry(baseSize, 8, 12),
         definition:
           "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
       };
@@ -204,7 +205,7 @@
       const coneGeo = {
         category: "Basic Geometries",
         name: "Cone Geometry",
-        geometry: new THREE.ConeBufferGeometry(baseSize, baseSize * 2),
+        geometry: new THREE.ConeBufferGeometry(baseSize, baseSize / 2),
         definition:
           "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)"
       };
@@ -212,7 +213,7 @@
       const coneVar1Geo = {
         category: "Basic Geometries",
         name: "Cone Geometry (32 Segments)",
-        geometry: new THREE.ConeBufferGeometry(baseSize, baseSize * 2, 32),
+        geometry: new THREE.ConeBufferGeometry(baseSize, baseSize / 2, 32),
         definition:
           "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)"
       };
@@ -223,7 +224,7 @@
         geometry: new THREE.CylinderBufferGeometry(
           baseSize,
           baseSize,
-          baseSize * 2
+          baseSize / 3
         ),
         definition:
           "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)"
@@ -235,7 +236,7 @@
         geometry: new THREE.CylinderBufferGeometry(
           baseSize,
           baseSize,
-          baseSize * 2,
+          baseSize / 3,
           32
         ),
         definition:
@@ -248,7 +249,7 @@
         geometry: new THREE.CylinderBufferGeometry(
           baseSize,
           baseSize * 1.5,
-          baseSize * 2,
+          baseSize / 3,
           32
         ),
         definition:
@@ -275,8 +276,8 @@
 
       const circleVar1Geo = {
         category: "Flat Geometries",
-        name: "Circle Geometry (32 Segments)",
-        geometry: new THREE.CircleBufferGeometry(baseSize, 32),
+        name: "Circle Geometry (16 Segments)",
+        geometry: new THREE.CircleBufferGeometry(baseSize, 16),
         definition:
           "CircleGeometry(<u>radius : Float</u>, segments : Integer, thetaStart : Float, thetaLength : Float)"
       };
@@ -291,8 +292,8 @@
 
       const ringVar1Geo = {
         category: "Flat Geometries",
-        name: "Ring Geometry (32 Segments)",
-        geometry: new THREE.RingBufferGeometry(baseSize / 2, baseSize, 32),
+        name: "Ring Geometry (16 Segments)",
+        geometry: new THREE.RingBufferGeometry(baseSize / 2, baseSize, 16),
         definition:
           "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)"
       };
@@ -301,9 +302,9 @@
         category: "Flat Geometries",
         name: "Ring Geometry (Short Theta Length)",
         geometry: new THREE.RingBufferGeometry(
-          baseSize / 2,
+          baseSize / 3,
           baseSize,
-          32,
+          16,
           1,
           0,
           4.5
@@ -646,7 +647,7 @@
       mesh3.rotation.y = mesh2.rotation.y;
 
       let testGeometry = new THREE.TetrahedronBufferGeometry(4);
-      let testMaterial = new THREE.MeshStandardMaterial();
+      let testMaterial = new THREE.MeshPhongMaterial();
 
       movingLightNumber = 0;
       selLight = movingLightArray[movingLightNumber];
@@ -972,7 +973,28 @@
 
         camera1.updateProjectionMatrix();
         camera2.updateProjectionMatrix();
+
+        // oscillator test
+        let fps = 60;
+        let hertz = 1;
+
+        console.log(triangleWave(frameCount, fps));
       }
+
+      function triangleWave(frameCount, fps) {
+        let cycle = frameCount % fps;
+        return -1 + cycle / (fps / 2);
+      }
+
+      function squareWave(frameCount, fps) {
+        let cycle = frameCount % fps;
+        if (cycle < fps / 2) {
+          return -1;
+        } else {
+          return 1;
+        }
+      }
+
       function displayInformationBox() {
         switch (selType) {
           case "selShape":
