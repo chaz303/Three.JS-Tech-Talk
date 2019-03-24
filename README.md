@@ -11,10 +11,10 @@ Download the 5 html files in the [code along folder](https://github.com/chaz303/
 My Three.js sandbox used during my talk can be found [here](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Sandbox). Follow these instructions in order to use the sandbox app.
 
 Enter the following commands
-* git clone https://github.com/chaz303/Three.JS-Tech-Talk.git
-* cd ./Three.JS-Tech-Talk/Sandbox/
-* npm install http-server -g
-* http-server -c-1
+* `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
+* `cd ./Three.JS-Tech-Talk/Sandbox/`
+* `npm install http-server -g`
+* `http-server -c-1`
 
 Once the server is running:
 * Click on this link: [http://localhost:8080](http://localhost:8080)
