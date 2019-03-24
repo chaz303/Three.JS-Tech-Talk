@@ -54,7 +54,7 @@ Enter the following commands:
 <img src="./img/codealong.png" alt="Code Along">
 </p>
 
-## Additional Resources
+## Additional Resources:
 
 ### Shader Demos
 
