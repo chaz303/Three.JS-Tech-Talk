@@ -41,6 +41,10 @@ Enter the following commands:
 
 **Note: pages (intentionally) appear blank except for `index-5.html` and `index-6.html`**
 
+### Code Along Screenshot (index_5.html): ###
+
+<img src="./img/codealong.png" alt="Code Along" height="338" width="385">
+
 ## Shaders
 
 ### Shader Demos
