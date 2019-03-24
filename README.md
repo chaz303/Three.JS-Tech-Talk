@@ -17,16 +17,16 @@ Once the server is running:
 * When the page has loaded: press the 'h' key for help.
 
 
-## Code Along
+## Here is the code along:
 
-Download the 5 html files in the [code along folder](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Code%20Along).
+The files needed for the code along can be found here [code along folder](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Code%20Along). You can download these files individually and open them with a browser manually, or you can use the following command-line instructions.
 
 Enter the following commands:
 * `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
 * `cd ./Three.JS-Tech-Talk/Code\ Along/`
 * `google-chrome ./index-1.html` (for Chrome Browser)
 
-**Note: pages appear blank except for `index-5.html` and `index-6.html`**
+**Note: pages (intentionally) appear blank except for `index-5.html` and `index-6.html`**
 
 ## Shaders
 
