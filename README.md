@@ -1,14 +1,32 @@
 # Dive into VR with WebGL & Three.js
 
-Thank you for your interest in my tech talk. 
+Thank you for your interest in my tech talk!
 
-## Code Along
+## Check out my Three.js sandbox:
 
-Download the 5 html files in the [code along folder](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Code%20Along).
+My Three.js sandbox, used during my talk to demonstrate features of Three.js, can be found [here](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Sandbox). In order to use the sandbox yourself, please follow these instructions.
 
-## My Three.js Sandbox
+Enter the following commands:
+* `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
+* `cd ./Three.JS-Tech-Talk/Sandbox/`
+* `sudo npm install http-server -g`
+* `http-server -c-1`
 
-My Three.js sandbox used during my talk can be found [here](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Sandbox). This code needs to be run on a local server in order to work.
+Once the server is running:
+* Click on this link: [http://localhost:8080](http://localhost:8080)
+* When the page has loaded: press the 'h' key for help.
+
+
+## Here is the code along:
+
+The files needed for the code along can be found here [code along folder](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Code%20Along). You can download these files individually and open them with a browser manually, or you can use the following command-line instructions.
+
+Enter the following commands:
+* `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
+* `cd ./Three.JS-Tech-Talk/Code\ Along/`
+* `google-chrome ./index-1.html` (for Chrome Browser)
+
+**Note: pages (intentionally) appear blank except for `index-5.html` and `index-6.html`**
 
 ## Shaders
 
