@@ -18,7 +18,7 @@ Once the server is running:
 * Click on [this link (http://localhost:8080)](http://localhost:8080) for the original sandbox.
 * When the page has loaded: press the 'h' key for help.
 
-* Click on [this link (http://localhost:8080/index_2.html)](http://localhost:8080/index_2.html) for the **experimental** sandbox.
+* Click on [this link (http://localhost:8080/index_2.html)](http://localhost:8080/index_2.html) for the *experimental* sandbox.
 * When the page has loaded: press the 'h' key for help.
 
 
