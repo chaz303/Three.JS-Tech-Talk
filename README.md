@@ -7,13 +7,18 @@ Thank you for your interest in my tech talk!
 My Three.js sandbox, used during my talk to demonstrate features of Three.js, can be found [here](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Sandbox). In order to use the sandbox yourself, please follow these instructions.
 
 Enter the following commands:
+
 * `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
 * `cd ./Three.JS-Tech-Talk/Sandbox/`
 * `sudo npm install http-server -g`
 * `http-server -c-1`
 
 Once the server is running:
-* Click on this link: [http://localhost:8080](http://localhost:8080)
+
+* Click on this link for the original sandbox: [http://localhost:8080](http://localhost:8080)
+* When the page has loaded: press the 'h' key for help.
+
+* Click on this link for the **experimental** sandbox: [http://localhost:8080/index_2.html](http://localhost:8080/index_2.html)
 * When the page has loaded: press the 'h' key for help.
 
 
