@@ -4,7 +4,7 @@ Thank you for your interest in my tech talk!
 
 ## Check out a video of my tech talk:
 
-[Click here](https://youtu.be/5mQJnIQ8fNs?t=7376)
+[Click here.](https://youtu.be/5mQJnIQ8fNs?t=7376)
 
 ## Check out my Three.js sandbox:
 
