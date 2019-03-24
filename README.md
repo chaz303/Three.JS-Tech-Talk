@@ -22,9 +22,10 @@ Once the server is running:
 * When the page has loaded: press the 'h' key for help.
 
 ### Original Sandbox Screenshots: ###
-<img align="middle" src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting" height="317" width="466">
+<p align="center">
+<img src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting" height="317" width="466">
 <img align="middle" src="./img/torusnormal.png" alt="Torus with Normal Mapping" height="317" width="466">
-
+</p>
 ### Experimental Sandbox Screenshots: ###
 
 <img align="middle" src="./img/experimental1.png" alt="Experimental Image 1" height="317" width="466">
