@@ -21,7 +21,14 @@ Once the server is running:
 * Click on [this link (http://localhost:8080/index_2.html)](http://localhost:8080/index_2.html) for the *experimental* sandbox.
 * When the page has loaded: press the 'h' key for help.
 
+### Original Sandbox Images: ###
 <img src="./img/dodecahedronlight.png" alt="Dodecahedron with Lighting" height="317" width="466">
+<img src="./img/torusnormal.png" alt="Torus with Normal Mapping" height="317" width="466">
+
+### Experimental Sandbox Images: ###
+
+<img src="./img/experimental1.png" alt="Experimental Image 1" height="317" width="466">
+<img src="./img/experimental2.png" alt="Experimental Image 2" height="317" width="466">
 
 ## Here is the code along:
 
