@@ -2,11 +2,11 @@
 
 Thank you for your interest in my tech talk!
 
-## Check out a video of my tech talk:
+## Here is the video of my tech talk on YouTube:
 
 [Click here.](https://youtu.be/5mQJnIQ8fNs?t=7376)
 
-## Check out my Three.js sandbox:
+## How to download and install my Three.js sandbox:
 
 My Three.js sandbox, used during my talk to demonstrate features of Three.js, can be found [here](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Sandbox). In order to use the sandbox yourself, please follow these instructions.
 
