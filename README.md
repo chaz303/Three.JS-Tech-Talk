@@ -51,7 +51,7 @@ Enter the following commands:
 ### Code Along Screenshot (index_5.html):
 
 <p align="center">
-<img src="./img/codealong.png" alt="Code Along" height="338" width="385">
+<img src="./img/codealong.png" alt="Code Along">
 </p>
 
 ## Shaders
