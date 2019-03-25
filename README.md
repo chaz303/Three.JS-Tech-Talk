@@ -5,7 +5,7 @@
 <h1 align="center">Dive into VR with WebGL & Three.js</h1>
 
 
-Thank you for your interest in my tech talk!
+Thank you for your interest in my tech talk.
 
 ## Here is the video of the tech talk on YouTube:
 
