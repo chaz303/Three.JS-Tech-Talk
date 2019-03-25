@@ -2,7 +2,7 @@
 
 <p float="left" align="center">
 <img src="./img/logos/2000px-WebGL_Logo.svg.png" height="80">&nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="./img/logos/threejs.svg" height="80">
+<img src="./img/logos/threejs.svg" height="60">
 </p>
 
 Thank you for your interest in my tech talk!
