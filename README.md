@@ -17,8 +17,8 @@ My Three.js sandbox, used during my talk to demonstrate features of Three.js, ca
 
 Enter the following commands:
 
-* `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
-* `cd ./Three.JS-Tech-Talk/Sandbox/`
+* `git clone https://github.com/chaz303/three.js-tech-talk.git`
+* `cd ./three.js-tech-talk/Sandbox/`
 * `sudo npm install http-server -g`
 * `http-server -c-1`
 
@@ -47,8 +47,8 @@ Once the server is running:
 The files needed for the code along can be found here [code along folder](https://github.com/chaz303/Three.JS-Tech-Talk/tree/master/Code%20Along). You can download these files individually and open them with a browser manually, or you can use the following command-line instructions.
 
 Enter the following commands:
-* `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
-* `cd ./Three.JS-Tech-Talk/Code\ Along/`
+* `git clone https://github.com/chaz303/three.js-tech-talk.git`
+* `cd ./three.js-tech-talk/Code\ Along/`
 * `google-chrome ./index-1.html` (for Chrome Browser)
 
 **Note: pages (intentionally) appear blank except for `index-5.html` and `index-6.html`**
