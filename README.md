@@ -1,7 +1,7 @@
-<p float="left" align="center">
+<div float="left" align="center" align-items="center" justify-content="center">
 <img src="./img/logos/2000px-WebGL_Logo.svg.png" height="60">&nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="./img/logos/threejs.svg" height="45">
-</p>
+</div>
 <h1 align="center">Dive into VR with WebGL & Three.js</h1>
 
 
