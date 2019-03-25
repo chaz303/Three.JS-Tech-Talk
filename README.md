@@ -1,4 +1,4 @@
-<div float="left" align="center" align-items="center" justify-content="center">
+<div float="left" align="center" veertical-align="middle">
 <img src="./img/logos/2000px-WebGL_Logo.svg.png" height="60">&nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="./img/logos/threejs.svg" height="45">
 </div>
