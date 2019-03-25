@@ -17,8 +17,8 @@ My Three.js sandbox, used during my talk to demonstrate features of Three.js, ca
 
 Enter the following commands:
 
-* `git clone https://github.com/chaz303/Three.JS-Tech-Talk.git`
-* `cd ./Three.JS-Tech-Talk/Sandbox/`
+* `git clone https://github.com/chaz303/three.js-tech-talk.git`
+* `cd ./three.js-tech-talk/Sandbox/`
 * `sudo npm install http-server -g`
 * `http-server -c-1`
 
