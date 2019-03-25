@@ -7,7 +7,7 @@
 
 Thank you for your interest in my tech talk!
 
-## Here is the video of my tech talk on YouTube:
+## Here is the video of the tech talk on YouTube:
 
 [Click here.](https://youtu.be/5mQJnIQ8fNs?t=7376)
 
