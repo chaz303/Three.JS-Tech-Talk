@@ -1,10 +1,9 @@
 <p float="left" align="center">
 <img src="./img/logos/2000px-WebGL_Logo.svg.png" height="60">&nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="./img/logos/threejs.svg" height="45">
+<br>
+<h1>Dive into VR with WebGL & Three.js</h1>
 </p>
-
-
-# Dive into VR with WebGL & Three.js
 
 Thank you for your interest in my tech talk!
 
