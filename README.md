@@ -1,9 +1,10 @@
-# Dive into VR with WebGL & Three.js
-
 <p float="left" align="center">
-<img src="./img/logos/2000px-WebGL_Logo.svg.png" height="80">&nbsp; &nbsp; &nbsp; &nbsp; 
-<img src="./img/logos/threejs.svg" height="60">
+<img src="./img/logos/2000px-WebGL_Logo.svg.png" height="60">&nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="./img/logos/threejs.svg" height="45">
 </p>
+
+
+# Dive into VR with WebGL & Three.js
 
 Thank you for your interest in my tech talk!
 
