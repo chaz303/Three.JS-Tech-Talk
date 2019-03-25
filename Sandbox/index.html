@@ -55,7 +55,7 @@
           window.innerWidth / window.innerHeight,
           0.1,
           3000
-        )
+        ),
       };
 
       const orthCam = {
@@ -70,7 +70,7 @@
           window.innerHeight / -orthoDiv,
           0.1,
           3000
-        )
+        ),
       };
 
       //SCENE
@@ -86,7 +86,7 @@
         category: "Light",
         name: "Ambient Light",
         definition: "AmbientLight(<u>color : Integer, intensity : Float</u>)",
-        light: new THREE.AmbientLight(lightColor, lightIntensity)
+        light: new THREE.AmbientLight(lightColor, lightIntensity),
       };
 
       const hemisphereLight = {
@@ -98,7 +98,7 @@
           lightColor,
           lightColor2,
           lightIntensity
-        )
+        ),
       };
 
       const pointLight = {
@@ -106,7 +106,7 @@
         name: "Point Light",
         definition:
           "PointLight(<u>color : Integer, intensity : Float</u>, distance : Number, decay : Float)",
-        light: new THREE.PointLight(lightColor, lightIntensity)
+        light: new THREE.PointLight(lightColor, lightIntensity),
       };
 
       const directionalLight = {
@@ -117,7 +117,7 @@
         light: new THREE.DirectionalLight(
           lightColor,
           lightIntensity /*, needstarget */
-        )
+        ),
       };
 
       const spotLight = {
@@ -128,7 +128,7 @@
         light: new THREE.SpotLight(
           lightColor,
           lightIntensity /*, needstarget */
-        )
+        ),
       };
 
       movingLightArray = [pointLight, directionalLight, spotLight];
@@ -161,7 +161,7 @@
           baseSize / 2
         ),
         definition:
-          "BoxGeometry(<u>width : Float, height : Float, depth : Float</u>, widthSegments : Integer, heightSegments : Integer, depthSegments : Integer)"
+          "BoxGeometry(<u>width : Float, height : Float, depth : Float</u>, widthSegments : Integer, heightSegments : Integer, depthSegments : Integer)",
       };
 
       const sphereGeo = {
@@ -169,7 +169,7 @@
         name: "Sphere Geometry",
         geometry: new THREE.SphereBufferGeometry(baseSize),
         definition:
-          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)",
       };
 
       const sphereVar1Geo = {
@@ -177,7 +177,7 @@
         name: "Sphere Geometry (16 x 16 Segments)",
         geometry: new THREE.SphereBufferGeometry(baseSize, 16, 16),
         definition:
-          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)",
       };
 
       const sphereVar2Geo = {
@@ -185,7 +185,7 @@
         name: "Sphere Geometry (32 x 32 Segments)",
         geometry: new THREE.SphereBufferGeometry(baseSize, 32, 32),
         definition:
-          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)",
       };
 
       const sphereVar3Geo = {
@@ -193,7 +193,7 @@
         name: "Sphere Geometry (64 x 64 Segments)",
         geometry: new THREE.SphereBufferGeometry(baseSize, 64, 64),
         definition:
-          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)"
+          "SphereGeometry(<u>radius : Float</u>, widthSegments : Integer, heightSegments : Integer, phiStart : Float, phiLength : Float, thetaStart : Float, thetaLength : Float)",
       };
 
       const coneGeo = {
@@ -201,7 +201,7 @@
         name: "Cone Geometry",
         geometry: new THREE.ConeBufferGeometry(baseSize, baseSize * 2),
         definition:
-          "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)"
+          "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)",
       };
 
       const coneVar1Geo = {
@@ -209,7 +209,7 @@
         name: "Cone Geometry (32 Segments)",
         geometry: new THREE.ConeBufferGeometry(baseSize, baseSize * 2, 32),
         definition:
-          "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)"
+          "ConeGeometry(<u>radius : Float, height : Float</u>, radialSegments : Integer, heightSegments : Integer, openEnded : Boolean, thetaStart : Float, thetaLength : Float)",
       };
 
       const cylinderGeo = {
@@ -221,7 +221,7 @@
           baseSize * 2
         ),
         definition:
-          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)"
+          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)",
       };
 
       const cylinderVar1Geo = {
@@ -234,7 +234,7 @@
           32
         ),
         definition:
-          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)"
+          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)",
       };
 
       const cylinderVar2Geo = {
@@ -247,7 +247,7 @@
           32
         ),
         definition:
-          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)"
+          "CylinderGeometry(<u>radiusTop, radiusBottom, height</u>, radiusSegments, heightSegments, openEnded, thetaStart, thetaLength)",
       };
 
       //FLAT GEOMETRY
@@ -257,7 +257,7 @@
         name: "Plane Geometry",
         geometry: new THREE.PlaneBufferGeometry(baseSize * 1.5, baseSize * 1.5),
         definition:
-          "PlaneGeometry(<u>width : Float, height : Float</u>, widthSegments : Integer, heightSegments : Integer)"
+          "PlaneGeometry(<u>width : Float, height : Float</u>, widthSegments : Integer, heightSegments : Integer)",
       };
 
       const circleGeo = {
@@ -265,7 +265,7 @@
         name: "Circle Geometry",
         geometry: new THREE.CircleBufferGeometry(baseSize),
         definition:
-          "CircleGeometry(<u>radius : Float</u>, segments : Integer, thetaStart : Float, thetaLength : Float)"
+          "CircleGeometry(<u>radius : Float</u>, segments : Integer, thetaStart : Float, thetaLength : Float)",
       };
 
       const circleVar1Geo = {
@@ -273,7 +273,7 @@
         name: "Circle Geometry (32 Segments)",
         geometry: new THREE.CircleBufferGeometry(baseSize, 32),
         definition:
-          "CircleGeometry(<u>radius : Float</u>, segments : Integer, thetaStart : Float, thetaLength : Float)"
+          "CircleGeometry(<u>radius : Float</u>, segments : Integer, thetaStart : Float, thetaLength : Float)",
       };
 
       const ringGeo = {
@@ -281,7 +281,7 @@
         name: "Ring Geometry",
         geometry: new THREE.RingBufferGeometry(baseSize / 2, baseSize),
         definition:
-          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)"
+          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)",
       };
 
       const ringVar1Geo = {
@@ -289,7 +289,7 @@
         name: "Ring Geometry (32 Segments)",
         geometry: new THREE.RingBufferGeometry(baseSize / 2, baseSize, 32),
         definition:
-          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)"
+          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)",
       };
 
       const ringVar2Geo = {
@@ -304,7 +304,7 @@
           4.5
         ),
         definition:
-          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)"
+          "RingGeometry(<u>innerRadius : Float, outerRadius : Float</u>, thetaSegments : Integer, phiSegments : Integer, thetaStart : Float, thetaLength : Float)",
       };
 
       //EXOTIC GEOMETRY
@@ -314,7 +314,7 @@
         name: "Tetrahedron Geometry",
         geometry: new THREE.TetrahedronBufferGeometry(baseSize), // "Uncaught TypeError: THREE.TetrahedronBufferGeometry is not a constructor" Not in threejs min
         definition:
-          "TetrahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+          "TetrahedronGeometry(<u>radius : Float</u>, detail : Integer)",
       };
 
       const dodecaGeo = {
@@ -322,7 +322,7 @@
         name: "Dodecahedron Geometry",
         geometry: new THREE.DodecahedronBufferGeometry(baseSize),
         definition:
-          "DodecahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+          "DodecahedronGeometry(<u>radius : Float</u>, detail : Integer)",
       };
 
       const icosaGeo = {
@@ -330,7 +330,7 @@
         name: "Icosahedron Geometry",
         geometry: new THREE.IcosahedronBufferGeometry(baseSize),
         definition:
-          "IcosahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+          "IcosahedronGeometry(<u>radius : Float</u>, detail : Integer)",
       };
 
       const octaGeo = {
@@ -338,7 +338,7 @@
         name: "Octahedron Geometry",
         geometry: new THREE.OctahedronBufferGeometry(baseSize),
         definition:
-          "OctahedronGeometry(<u>radius : Float</u>, detail : Integer)"
+          "OctahedronGeometry(<u>radius : Float</u>, detail : Integer)",
       };
 
       const torusGeo = {
@@ -346,7 +346,7 @@
         name: "Torus Geometry",
         geometry: new THREE.TorusBufferGeometry(baseSize, baseSize / 7.5),
         definition:
-          "TorusGeometry(<u>radius : Float, tube : Float</u>, radialSegments : Integer, tubularSegments : Integer, arc : Float)"
+          "TorusGeometry(<u>radius : Float, tube : Float</u>, radialSegments : Integer, tubularSegments : Integer, arc : Float)",
       };
 
       const torusVar1Geo = {
@@ -359,7 +359,7 @@
           32
         ),
         definition:
-          "TorusGeometry(<u>radius : Float, tube : Float</u>, radialSegments : Integer, tubularSegments : Integer, arc : Float)"
+          "TorusGeometry(<u>radius : Float, tube : Float</u>, radialSegments : Integer, tubularSegments : Integer, arc : Float)",
       };
 
       const torusKnotGeo = {
@@ -367,7 +367,7 @@
         name: "Torus Knot Geometry",
         geometry: new THREE.TorusKnotBufferGeometry(baseSize, baseSize / 7.5),
         definition:
-          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)",
       };
 
       const torusKnotVar1Geo = {
@@ -382,7 +382,7 @@
           2
         ),
         definition:
-          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)",
       };
 
       const torusKnotVar2Geo = {
@@ -397,7 +397,7 @@
           5
         ),
         definition:
-          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)",
       };
 
       const torusKnotVar3Geo = {
@@ -412,7 +412,7 @@
           7
         ),
         definition:
-          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)",
       };
 
       const torusKnotVar4Geo = {
@@ -427,7 +427,7 @@
           14
         ),
         definition:
-          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)",
       };
 
       const torusKnotVar5Geo = {
@@ -442,7 +442,7 @@
           6
         ),
         definition:
-          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)"
+          "TorusKnotGeometry(<u>radius : Float, tube : Float</u>, tubularSegments : Integer, radialSegments : Integer, p : Integer, q : Integer)",
       };
 
       const shapeArray = [
@@ -473,7 +473,7 @@
         torusKnotVar2Geo,
         torusKnotVar3Geo,
         torusKnotVar4Geo,
-        torusKnotVar5Geo
+        torusKnotVar5Geo,
       ];
 
       // MATERIALS
@@ -499,7 +499,7 @@
         wireframe: materialWireframe,
         wireframeLinewidth: materialWireLineWidth,
         roughness: materialRoughness,
-        metalness: materialMetalness
+        metalness: materialMetalness,
       };
       let materialSettingsMap = {
         color: materialColor,
@@ -508,7 +508,7 @@
         wireframe: materialWireframe,
         wireframeLinewidth: materialWireLineWidth,
         map: materialMap,
-        normalMap: normalMap
+        normalMap: normalMap,
       };
 
       //MESH MATERIALS
@@ -517,70 +517,70 @@
         category: "Material",
         name: "Mesh Basic Material (with Material Map)",
         definition: "MeshBasicMaterial( parameters : Object )",
-        material: new THREE.MeshBasicMaterial(materialSettingsMap)
+        material: new THREE.MeshBasicMaterial(materialSettingsMap),
       };
 
       let meshBasicNoMap = {
         category: "Material",
         name: "Mesh Basic Material",
         definition: "MeshBasicMaterial( parameters : Object )",
-        material: new THREE.MeshBasicMaterial(materialSettingsNoMap)
+        material: new THREE.MeshBasicMaterial(materialSettingsNoMap),
       };
 
       let meshLambertMap = {
         category: "Material",
         name: "Mesh Lambert Material (with Material Map)",
         definition: "MeshLambertMaterial( parameters : Object )",
-        material: new THREE.MeshLambertMaterial(materialSettingsMap)
+        material: new THREE.MeshLambertMaterial(materialSettingsMap),
       };
 
       let meshLambertNoMap = {
         category: "Material",
         name: "Mesh Lambert Material",
         definition: "MeshLambertMaterial( parameters : Object )",
-        material: new THREE.MeshLambertMaterial(materialSettingsNoMap)
+        material: new THREE.MeshLambertMaterial(materialSettingsNoMap),
       };
 
       let meshPhongMap = {
         category: "Material",
         name: "Mesh Phong Material (with Material Map)",
         definition: "MeshPhongMaterial( parameters : Object )",
-        material: new THREE.MeshPhongMaterial(materialSettingsMap)
+        material: new THREE.MeshPhongMaterial(materialSettingsMap),
       };
 
       let meshPhongNoMap = {
         category: "Material",
         name: "Mesh Phong Material",
         definition: "MeshPhongMaterial( parameters : Object )",
-        material: new THREE.MeshPhongMaterial(materialSettingsNoMap)
+        material: new THREE.MeshPhongMaterial(materialSettingsNoMap),
       };
 
       let meshStandardMap = {
         category: "Material",
         name: "Mesh Standard Material (with Material Map)",
         definition: "MeshStandardMaterial( parameters : Object )",
-        material: new THREE.MeshStandardMaterial(materialSettingsMap)
+        material: new THREE.MeshStandardMaterial(materialSettingsMap),
       };
 
       let meshStandardNoMap = {
         category: "Material",
         name: "Mesh Standard Material",
         definition: "MeshStandardMaterial( parameters : Object )",
-        material: new THREE.MeshStandardMaterial(materialSettingsNoMap)
+        material: new THREE.MeshStandardMaterial(materialSettingsNoMap),
       };
 
       let meshNormal = {
         category: "Material",
         name: "Mesh Normal Material",
         definition: "MeshNormalMaterial( parameters : Object )",
-        material: new THREE.MeshNormalMaterial(materialSettingsNoMap)
+        material: new THREE.MeshNormalMaterial(materialSettingsNoMap),
       };
 
       let meshDepth = {
         category: "Material",
         name: "Mesh Depth Material",
         definition: "",
-        material: new THREE.MeshDepthMaterial(materialSettingsNoMap)
+        material: new THREE.MeshDepthMaterial(materialSettingsNoMap),
       };
 
       const materialArray = [
@@ -592,7 +592,7 @@
         meshPhongMap,
         meshStandardNoMap,
         meshStandardMap,
-        meshNormal
+        meshNormal,
       ];
 
       //LINE AND POINT MATERIALS LineDashed also exists needs compute geometry
@@ -618,7 +618,7 @@
         color: 0xffffff,
         transparent: true,
         opacity: 0.65,
-        linewidth: 2
+        linewidth: 2,
       });
 
       let group1 = new THREE.Group();
@@ -986,8 +986,8 @@
             "space - start/stop shapes' rotation<br/>" +
             "</code></h3>";
         }
-        textBox.style.top = 10 + "px";
-        textBox.style.left = 10 + "px";
+        textBox.style.bottom = 10 + "px";
+        textBox.style.left = 50 + "px";
       }
     </script>
   </body>
