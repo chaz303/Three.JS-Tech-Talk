@@ -4,16 +4,19 @@
 
     <style>
       body {
+        background-color: black;
+        color: white;
         margin: 0;
         overflow: hidden;
       }
     </style>
   </head>
   <body>
-    <canvas id="theCanvas"></canvas>
-
+    <div id="canvasContainer">
+        <canvas id="theCanvas"></canvas>
+    </div>
+    <center><h1>Loading...</h1></center>
     <script src="three.js"></script>
-
     <script>
       // SHAPES
       let renderer,
@@ -24,12 +27,12 @@
 
       document.body.appendChild(textBox);
 
-      let shapeNumber = 0;
+      let shapeNumber;
       let materialNumber = 6;
       const displayArray = ["selShape", "selMat", "selLight", "selCam"];
       let displayNumber = 3;
       let rotationOn = true;
-      let wireframeOn = false;
+      let wireframeOn = true;
       let displayHelp = false;
       let lightOn = false;
 
@@ -652,7 +655,7 @@
 
       scene.add(group1);
       scene.add(mesh2, mesh3);
-      //scene.add(movingLight);
+      scene.add(movingLight);
 
       camera1.position.y = 30;
       camera2.position.y = camera1.position.y;
@@ -664,22 +667,20 @@
       let frameCount = 0;
 
       // start up
-      changeGeometry(shapeArray[0]);
+
+      shapeNumber = 23;
+      selShape = shapeArray[shapeNumber];
+      changeGeometry(selShape);
+      displayNumber = 3;
+      selType = displayArray[displayNumber];
       switchDisplay();
+      displayHelp = true;
+
       animate();
 
       function animate() {
         render();
         displayInformationBox();
-        // if ((frameCount + 1) % 700 == 0) {
-        //   selShape = shapeArray[shapeNumber];
-        //   changeGeometry(selShape);
-        //   if (shapeNumber < shapeArray.length - 1) {
-        //     shapeNumber++;
-        //   } else {
-        //     shapeNumber = 0;
-        //   }
-        // }
         frameCount++;
         requestAnimationFrame(animate);
       }
@@ -975,18 +976,19 @@
           textBox.innerHTML =
             "<h2>Help:</h2>" +
             "<h3><code>" +
-            "h - display/hide help<br/>" +
+            "h - toggle help/information<br/>" +
             "d - cycle display information<br/>" +
             "c - switch perspective and orthoscopic cameras<br/>" +
             "right arrow - display next shape<br/>" +
             "left arrow -  display previous shape<br/>" +
+            "k - display/hide green directional light<br/>" +
             "w - display/hide wireframe<br/>" +
             "m - display next material<br/>" +
             "n - display previous material<br/>" +
             "space - start/stop shapes' rotation<br/>" +
             "</code></h3>";
         }
-        textBox.style.bottom = 10 + "px";
+        textBox.style.bottom = 30 + "px";
         textBox.style.left = 50 + "px";
       }
     </script>
